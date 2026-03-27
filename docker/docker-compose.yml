@@ -85,6 +85,8 @@ services:
     image: ghcr.io/vansummeren/music-history-analyser-frontend:${IMAGE_TAG:-latest}
     env_file:
       - ${STACK_ENV_FILE}
+    tmpfs:
+      - /run
     # ports:
     #   - "80:80"
     networks:
