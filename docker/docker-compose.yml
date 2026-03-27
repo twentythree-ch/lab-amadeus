@@ -43,8 +43,8 @@ services:
     image: ghcr.io/vansummeren/music-history-analyser-backend:${IMAGE_TAG:-latest}
     env_file:
       - ${STACK_ENV_FILE}
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -85,8 +85,8 @@ services:
     image: ghcr.io/vansummeren/music-history-analyser-frontend:${IMAGE_TAG:-latest}
     env_file:
       - ${STACK_ENV_FILE}
-    ports:
-      - "80:80"
+    # ports:
+    #   - "80:80"
     networks:
       - internal
     restart: unless-stopped
