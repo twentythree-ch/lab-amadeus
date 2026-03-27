@@ -87,6 +87,7 @@ services:
       - ${STACK_ENV_FILE}
     tmpfs:
       - /run
+      - /etc/nginx/conf.d
     # ports:
     #   - "80:80"
     networks:
