@@ -3,10 +3,6 @@ services:
     image: postgres:16-alpine
     env_file:
       - ${STACK_ENV_FILE}
-    # environment:
-    #   POSTGRES_DB: ${POSTGRES_DB:-musicanalyser}
-    #   POSTGRES_USER: ${POSTGRES_USER:-postgres}
-    #   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -43,8 +39,6 @@ services:
     image: ghcr.io/vansummeren/music-history-analyser-backend:${IMAGE_TAG:-latest}
     env_file:
       - ${STACK_ENV_FILE}
-    # ports:
-    #   - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -85,11 +79,6 @@ services:
     image: ghcr.io/vansummeren/music-history-analyser-frontend:${IMAGE_TAG:-latest}
     env_file:
       - ${STACK_ENV_FILE}
-    tmpfs:
-      - /run
-      - /etc/nginx/conf.d
-    # ports:
-    #   - "80:80"
     networks:
       - internal
     restart: unless-stopped
